@@ -148,17 +148,40 @@ main {
   align-items: center !important;
   gap: 28px;
 }
-
-.navbar-list .nav-item {
+.navbar-list-service{
+  display: flex;
+  align-items: center !important;
+  gap: 28px;
+}
+.navbar-list .nav-item a{
   font-size: 18px;
   font-weight: 500;
   line-height: 132%;
   letter-spacing: -0.36px;
-  color: #fff;
+  color: #fff !important;
   padding: 0 4px;
+  text-decoration: none;
+}
+.navbar-list-service .nav-item a{
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 132%;
+  letter-spacing: -0.36px;
+  color: #000 !important;
+  padding: 0 4px;
+  text-decoration: none;
+}
+.cmn-color-service{
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 132%;
+  letter-spacing: -0.36px;
+  color: #000 !important;
+  padding: 0 4px;
+  text-decoration: none;
 }
 
-.cmn-color {
+.cmn-color a{
   color: #252c32 !important;
 }
 
@@ -230,7 +253,7 @@ main {
 
 .form-select:focus,
 .form-control:focus {
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .btn-custom {
@@ -353,6 +376,7 @@ main {
   line-height: 132%;
   letter-spacing: -0.48px;
   text-align: center !important;
+  margin: 0 auto;
 }
 
 .section-subtitle {
@@ -467,8 +491,8 @@ main {
 .testimonial-item {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 30px;
+  justify-content: space-between;
+  padding: 30px !important;
   border: 1px solid #ebebeb;
   border-radius: 16px;
 }
@@ -512,12 +536,13 @@ main {
   line-height: 132%;
   letter-spacing: -0.32px;
 }
-
+.stars{
+  padding: 20px  0;
+}
 .stars span svg {
   width: 24px;
   height: 24px;
 }
-
 .testimonial-controls {
   display: flex;
   justify-content: center;
@@ -544,7 +569,7 @@ main {
 .booking-section {
   margin-top: 120px;
   padding: 100px 0;
-  background: url("../images/booking-bg.png");
+  background: url("./assets/booking-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -606,7 +631,7 @@ main {
 
 .form-input-wrapper .form-control,
 .form-input-wrapper .form-select {
-  padding: 17px 20px;
+  padding: 17px 20px !important;
   border-radius: 8px;
   /* background: rgba(235, 235, 235, 0.25); */
   font-size: 14px;
@@ -1416,6 +1441,7 @@ main {
   font-weight: 500;
   line-height: 164%;
   text-transform: uppercase;
+  text-decoration: none;
 }
 .banner-navigation span {
   /* font-family: "Satoshi Variable"; */
@@ -1959,6 +1985,7 @@ main {
   font-style: normal;
   font-weight: 400;
   line-height: 22.96px;
+  text-decoration: none;
 }
 
 .tm-contact-devider {
@@ -2168,6 +2195,10 @@ main {
   width: fit-content;
   align-self: center;
   max-width: 528px;
+  text-decoration: none;
+}
+.slick-slide > div {
+  padding: 0 10px;
 }
 
 /* faq end */
@@ -3743,4 +3774,120 @@ main {
     width: 100%;
   }
 }
+
+.slick-dots li.slick-active button:before {
+  opacity: .75;
+  color: #6997FF !important;
+  height: 30px !important;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 57px !important;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  box-shadow: none !important;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+
+/* progress bar css */
+
+
+.progress-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.progress-item {
+  width: 100%;
+}
+
+.progress-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.progress {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+
+/* faq  */
+
+.accordion-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 16px;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e9ecef;
+}
+
+.accordion-body {
+  padding: 1rem;
+  font-size: 14px;
+}
+
+.accordion-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 4s ease-out, padding 0.4s ease-out !important;
+}
+
+.accordion-collapse.show {
+  max-height: 500px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.icon-plus,
+.icon-minus {
+  transition: opacity 0.3s ease;
+}
+
+.icon-plus {
+  opacity: 1;
+}
+
+.icon-minus {
+  opacity: 0;
+}
+
+.accordion-button:not(.collapsed) .icon-plus {
+  opacity: 0;
+}
+
+.accordion-button:not(.collapsed) .icon-minus {
+  opacity: 1;
+}
+
 
