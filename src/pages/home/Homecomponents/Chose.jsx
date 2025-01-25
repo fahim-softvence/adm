@@ -1,6 +1,10 @@
 import React from "react";
+import getHomeData from "../../../hooks/getHomeData";
+
+
 
 const Chose = () => {
+  const {homepageData,why_choose_us,} = getHomeData();
   return (
     <>
       <section class="why-choose-section section-padding-x m-top m-bottom">

@@ -5,7 +5,6 @@ import Googlelogo from "../assets/google-play.png"
 import Facebooklogo from "../assets/facebook.png"
 import Instalogo from "../assets/insta.png"
 import Twiterlogo from "../assets/twitter.png"
-
 const Footer = () => {
   return (
     <>

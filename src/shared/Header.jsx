@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import Logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import getHomeData from "../hooks/getHomeData";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const {homepageData} = getHomeData();
+  console.log(homepageData);
+  
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  
 
   return (
     <header className="hero-section">
@@ -29,7 +33,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="#pricing">
                   Pricing
                 </Link>
               </li>
@@ -66,7 +70,7 @@ const Header = () => {
                 <Link to="/service">Services</Link>
               </li>
               <li className="sidebar-item">
-                <Link to="/">Pricing</Link>
+                <Link to="/#pricing" onClick={() =>setIsSidebarOpen(false)}>Pricing</Link>
               </li>
               <li className="sidebar-item">
                 <Link to="/about">About Us</Link>
@@ -78,20 +82,16 @@ const Header = () => {
             <button className="btn-custom">Book Now</button>
           </div>
         </div>
-
         {/* Banner Content */}
-
-        <div class="banner-content">
+        <div  class="banner-content">
           <h1 class="hero-title">
-            The Shop You Can <span class="trust">Trust</span> For Quality
+            {homepageData.title}
+             <span class="trust"></span> 
             <br />
-            Repair at a <span class="fair-price">Fair Price</span>
+           <span class="fair-price"></span>
           </h1>
           <p class="hero-text">
-            We pride ourselves on delivering top-notch repairs with honesty and
-            integrity. Whether it's a quick fix or a major overhaul, our
-            experienced technicians use the highest quality parts and the latest
-            tools to get the job done right the first time.
+            {homepageData.description}
           </p>
 
           <form class="banner-select-form">

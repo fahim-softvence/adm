@@ -147,6 +147,7 @@ main {
   display: flex;
   align-items: center !important;
   gap: 28px;
+  margin-top: 25px !;
 }
 .navbar-list-service{
   display: flex;
@@ -159,6 +160,15 @@ main {
   line-height: 132%;
   letter-spacing: -0.36px;
   color: #fff !important;
+  padding: 0 4px;
+  text-decoration: none;
+}
+.navbar-list .nav-item-1 a{
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 132%;
+  letter-spacing: -0.36px;
+  color: #000 !important;
   padding: 0 4px;
   text-decoration: none;
 }
@@ -3890,4 +3900,20 @@ main {
   opacity: 1;
 }
 
+.slick-dots li button:before {
+  font-family: 'slick';
+  font-size: 12px !important;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: '•';
+  text-align: center;
+  opacity: .25;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
