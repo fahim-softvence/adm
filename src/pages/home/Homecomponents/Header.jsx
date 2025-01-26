@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import Logo from "../assets/logo.png";
+import Logo from  "../../../assets/logo.png"
 import { Link } from "react-router-dom";
-import getHomeData from "../hooks/getHomeData";
+import useHomeData from "../../../hooks/useHomeData";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const {homepageData} = getHomeData();
-  console.log(homepageData);
+  const {section} = useHomeData("Home","Hero Section")
   
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  
 
   return (
-    <header className="hero-section">
+    <header className="hero-section" style={{backgroundImage}}>
       <div className="section-padding-x">
         <nav className="breakdown-navbar">
           <div className="breakdown-navbar-wrapper">
@@ -70,7 +69,9 @@ const Header = () => {
                 <Link to="/service">Services</Link>
               </li>
               <li className="sidebar-item">
-                <Link to="/#pricing" onClick={() =>setIsSidebarOpen(false)}>Pricing</Link>
+                <Link to="/#pricing" onClick={() => setIsSidebarOpen(false)}>
+                  Pricing
+                </Link>
               </li>
               <li className="sidebar-item">
                 <Link to="/about">About Us</Link>
@@ -82,54 +83,47 @@ const Header = () => {
             <button className="btn-custom">Book Now</button>
           </div>
         </div>
-        {/* Banner Content */}
-        <div  class="banner-content">
-          <h1 class="hero-title">
-            {homepageData.title}
-             <span class="trust"></span> 
-            <br />
-           <span class="fair-price"></span>
-          </h1>
-          <p class="hero-text">
-            {homepageData.description}
-          </p>
 
-          <form class="banner-select-form">
-            <div class="banner-select">
-              <p class="banner-select-title">Recovery Type*</p>
-              <select class="form-select" required>
+        {/* Banner Content */}
+        <div className="banner-content">
+          <h1 className="hero-title">{section?.title}</h1>
+          <p className="hero-text">{section?.description}</p>
+          <form className="banner-select-form">
+            <div className="banner-select">
+              <p className="banner-select-title">Recovery Type*</p>
+              <select className="form-select" required>
                 <option>A2B Transportation</option>
                 <option>Towing</option>
                 <option>Roadside Assistance</option>
               </select>
             </div>
-            <div class="banner-select">
-              <p class="banner-select-title">Vehicle Make*</p>
-              <select class="form-select" required>
+            <div className="banner-select">
+              <p className="banner-select-title">Vehicle Make*</p>
+              <select className="form-select" required>
                 <option>Toyota</option>
                 <option>Ford</option>
                 <option>Honda</option>
               </select>
             </div>
-            <div class="banner-select">
-              <p class="banner-select-title">Vehicle Model*</p>
-              <select class="form-select" required>
+            <div className="banner-select">
+              <p className="banner-select-title">Vehicle Model*</p>
+              <select className="form-select" required>
                 <option>Corolla</option>
                 <option>Civic</option>
                 <option>Focus</option>
               </select>
             </div>
-            <div class="banner-select">
-              <p class="banner-select-title">Registration Number*</p>
+            <div className="banner-select">
+              <p className="banner-select-title">Registration Number*</p>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Registration Number"
                 required
               />
             </div>
-            <div class="">
-              <button type="submit" class="btn-custom">
+            <div className="">
+              <button type="submit" className="btn-custom">
                 Get Quote
               </button>
             </div>

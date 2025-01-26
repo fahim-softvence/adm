@@ -1,7 +1,11 @@
 import React from "react";
 import Plancard from "../../../shared/Plancard";
+import useHomeData from "../../../hooks/useHomeData";
 
 const Plan = () => {
+  const { section } = useHomeData("Home", "Best Services");
+  
+
   const icon1 = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -124,42 +128,18 @@ const Plan = () => {
     <>
       <section class="tm-services-section section-padding-x m-bottom">
         <div class="tm-services-section-heading-wrapper">
-          <h2 class="tm-common-heading">
-            We Have the Plan for You to give you best Service
-          </h2>
-          <p class="tm-common-para">
-            we pride ourselves on delivering top-notch repairs with honesty and
-            integrity. Whether it’s a quick fix or a major overhaul, our
-            experienced technicians use the highest quality parts and the latest
-            tools to get the job done right the first time.
-          </p>
+          <h2 class="tm-common-heading">{section?.title}</h2>
+          <p class="tm-common-para">{section?.description}</p>
         </div>
         <div class="tm-services-card-wrapper">
-          <Plancard
-            icon={icon1}
-            title="A2B Transportation"
-            description="we understand how stressful a breakdown can be. That’s why our expert recovery team is available to get you back on the road as quickly and safely as possible"
-          />
-          <Plancard
-            icon={icon2}
-            title="Jumpstart Service"
-            description="we specialize in accident recovery services to get you and your vehicle to safety with minimal stress. Our experienced team is available to provide prompt and professional assistance when you need it most."
-          />
-          <Plancard
-            icon={icon3}
-            title="Immediate Breakdown Recovery"
-            description="Need to move your vehicle from point A to point B? we offers reliable and secure vehicle transportation services tailored to your needs."
-          />
-          <Plancard
-            icon={icon4}
-            title="Accident Assistance"
-            description="we understand that vehicle breakdowns or accidents can happen far from home. That’s why our long-distance recovery service is designed to ensure you’re never left stranded, no matter how far away you are."
-          />
-          <Plancard
-            icon={icon5}
-            title="Mobile Tyre Fitting"
-            description="we offer fast and reliable emergency fuel delivery to get you back on the road in no time. Whether you’re stranded on the highway or parked in a parking lot, our team is ready to bring the fuel you need, right to your location"
-          />
+        {section?.services?.map((carditem, index) => (
+      <Plancard
+        key={index}
+        icon={icon1}
+        title={carditem.title}
+        description={carditem?.description}
+      />
+    ))}
         </div>
       </section>
     </>

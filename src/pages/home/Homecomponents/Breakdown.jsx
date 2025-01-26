@@ -1,31 +1,37 @@
-import React from 'react'
-import Applelogo from "../../../assets/apple.png"
-import Googlelogo from "../../../assets/google-play.png"
+import React from "react";
+import Applelogo from "../../../assets/apple.png";
+import Googlelogo from "../../../assets/google-play.png";
+import useHomeData from "../../../hooks/useHomeData";
 
 const Breakdown = () => {
+  const { data, section } = useHomeData("Home", "Download App");
+
   return (
     <>
-       <section class="download-app-section">
+      <section class="download-app-section">
         <div class="download-app-container">
-          <h1 class="download-app-title">
-            Breakdowns? No worries—download our app and get instant service!
-          </h1>
-          <p class="download-app-subtitle">
-            Download our app now and get fast service, wherever you are. Solving
-            vehicle issues is just one click away!
-          </p>
-          <div class="download-app-buttons">
-            <a href="#" class="download-app-store-btn">
-              <img src={Applelogo} alt="Download on the App Store" />
+          <h1 class="download-app-title">{section?.title}</h1>
+          <p class="download-app-subtitle">{section?.description}</p>
+          <div className="app-links">
+            <a
+              href="https://apps.apple.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={Applelogo} alt="App Store" />
             </a>
-            <a href="#" class="download-google-play-btn">
-              <img src={Googlelogo} alt="Get it on Google Play" />
+            <a
+              href="https://play.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={Googlelogo} alt="Google Play" />
             </a>
           </div>
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Breakdown
+export default Breakdown;

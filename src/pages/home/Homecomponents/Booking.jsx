@@ -1,16 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import useHomeData from "../../../hooks/useHomeData";
 
 const Booking = () => {
+  const { data, section } = useHomeData("Home", "Book a Service Time");
+  const [location, setLocation] = useState(null);
+  const [error, setError] = useState(null);
+
+
+
+  const handleGetLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation(`Latitude: ${latitude}, Longitude: ${longitude}`);
+          setError(null);
+          const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+          window.open(googleMapsUrl, "_blank");
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          setLocation(null);
+          if (error.code === error.PERMISSION_DENIED) {
+            setError(
+              "Location access denied. Please allow access to your location."
+            );
+          } else if (error.code === error.POSITION_UNAVAILABLE) {
+            setError("Unable to retrieve location. Please try again.");
+          } else {
+            setError("An unknown error occurred while retrieving location.");
+          }
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by this browser.");
+    }
+  };
+
   return (
     <>
       <section className="booking-section">
         <div className="section-padding-x">
-          <h2 className="section-title">Book a Service Time</h2>
-          <p className="section-subtitle">
-            At Car Breakdown, we make it easy to book a service time that works
-            for you. Whether you need roadside assistance, a tow, or emergency
-            fuel delivery, our team is ready to help at your convenience.
-          </p>
+          <h2 className="section-title">{section?.title}</h2>
+          <p className="section-subtitle">{section?.description}</p>
 
           <div className="booking-form-wrapper">
             <div className="booking-form-continer">
@@ -24,8 +56,10 @@ const Booking = () => {
                   </label>
                   <select className="form-select" required>
                     <option>Jumpstart Service</option>
-                    <option>Towing</option>
-                    <option>Roadside Assistance</option>
+                    <option>A2B Transportation</option>
+                    <option>Immediate Breakdown Recovery</option>
+                    <option>Accident Assistance</option>
+                    <option>Mobile Tyre Fitting</option>
                   </select>
                 </div>
                 <div className="form-input-wrapper">
@@ -60,7 +94,10 @@ const Booking = () => {
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
                       />
-                      <label className="form-check-label" for="flexRadioDefault1">
+                      <label
+                        className="form-check-label"
+                        for="flexRadioDefault1"
+                      >
                         Yes
                       </label>
                     </div>
@@ -72,7 +109,10 @@ const Booking = () => {
                         id="flexRadioDefault2"
                         checked
                       />
-                      <label className="form-check-label" for="flexRadioDefault2">
+                      <label
+                        className="form-check-label"
+                        for="flexRadioDefault2"
+                      >
                         No
                       </label>
                     </div>
@@ -88,7 +128,11 @@ const Booking = () => {
                 <div className="form-input-wrapper">
                   <label className="form-label">Postcode</label>
                   <input type="number" className="form-control" />
-                  <button type="button" className="btn-custom w-100 form-btn">
+                  <button
+                    type="button"
+                    className="btn-custom w-100 form-btn"
+                    onClick={handleGetLocation}
+                  >
                     Use Current location
                   </button>
                 </div>

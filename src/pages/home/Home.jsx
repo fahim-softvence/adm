@@ -5,7 +5,7 @@ import Pricing from './Homecomponents/Pricing'
 import Testimonial from './Homecomponents/Testimonial'
 import Booking from './Homecomponents/Booking'
 import Breakdown from './Homecomponents/Breakdown'
-import Header from '../../shared/Header'
+import Header from './Homecomponents/Header'
 
 const Home = () => {
   

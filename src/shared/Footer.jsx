@@ -1,15 +1,23 @@
 import React from "react";
-import Footerlogo from "../assets/footer-logo.png"
-import Applelogo from "../assets/apple.png"
-import Googlelogo from "../assets/google-play.png"
-import Facebooklogo from "../assets/facebook.png"
-import Instalogo from "../assets/insta.png"
-import Twiterlogo from "../assets/twitter.png"
+import Footerlogo from "../assets/footer-logo.png";
+import Applelogo from "../assets/apple.png";
+import Googlelogo from "../assets/google-play.png";
+import Facebooklogo from "../assets/facebook.png";
+import Instalogo from "../assets/insta.png";
+import Twiterlogo from "../assets/twitter.png";
+import useHomeData from "../hooks/useHomeData"
+
 const Footer = () => {
+  const { section } = useHomeData("Home", "Footer");
+  
+  if (!section || !section.footer) {
+    return <div>Loading...</div>; 
+  }
+
   return (
-    <>
-      <footer className="custom-footer">
-        <div className="section-padding-x">
+    <footer className="custom-footer">
+      {section.footer?.map((footer) => (
+        <div className="section-padding-x" key={footer?.id}>
           <div className="footer-container">
             <div className="footer-left">
               <div className="footer-logo">
@@ -17,13 +25,7 @@ const Footer = () => {
                   <img src={Footerlogo} alt="logo" />
                 </a>
               </div>
-              <p className="footer-about">
-                At Car Breakdown, we are dedicated to providing top-notch
-                roadside assistance and recovery services to drivers in need.
-                With years of experience and a team of skilled professionals, we
-                take pride in offering prompt, reliable, and customer-focused
-                solutions, ensuring your safety and convenience come first.
-              </p>
+              <p className="footer-about">{footer?.description}</p>
             </div>
 
             <div className="footer-links">
@@ -59,9 +61,21 @@ const Footer = () => {
 
             <div className="footer-right">
               <h4 className="footer-heading">Get the App</h4>
-              <div className="app-links">
-                <img src={Applelogo} alt="App Store" />
-                <img src={Googlelogo} alt="Google Play" />
+              <div className="app-links-2">
+                <a
+                  href="https://apps.apple.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={Applelogo} alt="App Store" />
+                </a>
+                <a
+                  href="https://play.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={Googlelogo} alt="Google Play" />
+                </a>
               </div>
 
               <p>
@@ -70,30 +84,40 @@ const Footer = () => {
                 Inc., registered in the U.S.
               </p>
               <div className="social-icons">
-                <a href="#">
-                  <img src={Facebooklogo} alt="Facebook" />
-                </a>
-                <a href="#">
-                  <img src={Instalogo} alt="Instagram" />
-                </a>
-                <a href="#">
-                  <img src={Twiterlogo} alt="Twitter" />
-                </a>
+                {footer?.social_media?.map((social) => (
+                  <a
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={social.id}
+                  >
+                    <img
+                      src={
+                        social.title === "Facebook"
+                          ? Facebooklogo
+                          : social.title === "Instagram"
+                          ? Instalogo
+                          : social.title === "X"
+                          ? Twiterlogo
+                          : ""
+                      }
+                      alt={social.title}
+                    />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
           <div className="d-flex align-items-center justify-content-between gap-5 flex-wrap footer-bottom">
-            <p className="footer-copyright">
-              © 2024 Car Breakdown. We love our users!
-            </p>
+            <p className="footer-copyright">{footer?.copyright}</p>
             <p className="footer-policies">
               <a href="#">Terms & Conditions</a> ·<a href="#">Privacy Policy</a>
             </p>
           </div>
         </div>
-      </footer>
-    </>
+      ))}
+    </footer>
   );
 };
 

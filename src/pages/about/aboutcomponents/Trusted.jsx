@@ -1,74 +1,55 @@
 import React, { useEffect } from "react";
 import About from "../../../assets/about-us-1.png";
+import useAboutData from "../../../hooks/useAboutData";
 
 const Trusted = () => {
+  const { section } = useAboutData("About Us", "Recovery Experts");
+  console.log(section);
+
   useEffect(() => {
     const progressBars = document.querySelectorAll(".progress-bar");
+    
     progressBars.forEach((progressBar) => {
       const percentage = progressBar.getAttribute("data-percentage");
-      progressBar.style.width = percentage + "%";
+      progressBar.style.width = "0%";
+      progressBar.style.transition = "width 2s ease-in-out, background-color 1s ease-in-out";
+
+      setTimeout(() => {
+        progressBar.style.width = percentage + "%";
+
+        if (percentage >= 80) {
+          progressBar.style.backgroundColor = "#76c043";
+        } 
+      }, 100); 
     });
-  }, []);
+  }, [section]);
 
   return (
     <>
-      <section class="section-padding-x text-img-container m-top m-bottom">
-        <div class="text-container">
-          <div class="section-sub-title">About Us</div>
-          <div class="section-title mt-4">
-            Your Trusted Vehicle Recovery Experts
-          </div>
-          <div class="section-text mt-3">
-            At Car Breakdown, we understand how stressful vehicle breakdowns can
-            be. That’s why our team is committed to providing fast,
-            professional, and affordable services across the UK. With years of
-            experience and a fleet of modern recovery vehicles, we’ve got you
-            covered.
-          </div>
+      <section className="section-padding-x text-img-container m-top m-bottom">
+        <div className="text-container">
+          <div className="section-sub-title">{section?.page_name}</div>
+          <div className="section-title mt-4">{section?.title}</div>
+          <div className="section-text mt-3">{section?.description}</div>
           <div className="progress-bar-container">
-            <div className="progress-item">
-              <div className="progress-item-header">
-                <span className="label">Experienced</span>
-                <span className="percentage">98%</span>
+            {section?.recovery_experts?.map((percent) => (
+              <div className="progress-item" key={percent?.id}>
+                <div className="progress-item-header">
+                  <span className="label">{percent?.statistic_name}</span>
+                  <span className="percentage">{percent?.statistic_percentage}%</span>
+                </div>
+                <div className="progress">
+                  <div
+                    className="progress-bar"
+                    data-percentage={percent?.statistic_percentage}
+                  ></div>
+                </div>
               </div>
-              <div className="progress">
-                <div className="progress-bar" data-percentage="98"></div>
-              </div>
-            </div>
-
-            <div className="progress-item">
-              <div className="progress-item-header">
-                <span className="label">Reliable</span>
-                <span className="percentage">86%</span>
-              </div>
-              <div className="progress">
-                <div className="progress-bar" data-percentage="86"></div>
-              </div>
-            </div>
-
-            <div className="progress-item">
-              <div className="progress-item-header">
-                <span className="label">Skilled & Capable</span>
-                <span className="percentage">90%</span>
-              </div>
-              <div className="progress">
-                <div className="progress-bar" data-percentage="90"></div>
-              </div>
-            </div>
-
-            <div className="progress-item">
-              <div className="progress-item-header">
-                <span className="label">Flexible</span>
-                <span className="percentage">76%</span>
-              </div>
-              <div className="progress">
-                <div className="progress-bar" data-percentage="76"></div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-        <div class="img-container">
-          <img src={About} alt="" />
+        <div className="img-container">
+          <img src={About} alt="About Us" />
         </div>
       </section>
     </>

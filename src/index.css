@@ -147,7 +147,7 @@ main {
   display: flex;
   align-items: center !important;
   gap: 28px;
-  margin-top: 25px !;
+  margin-top: 25px !important;
 }
 .navbar-list-service{
   display: flex;
@@ -505,6 +505,7 @@ main {
   padding: 30px !important;
   border: 1px solid #ebebeb;
   border-radius: 16px;
+  margin-top: 60px !important;
 }
 
 .testimonial-item p {
@@ -3917,3 +3918,17 @@ main {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.testimonial-items-wrapper {
+  margin-top: 60px !important;
+}
+
+.app-links{
+  display: flex  !important;
+  justify-content: center !important;
+  gap: 20px !important;
+}
+.app-links-2{
+  display: flex  !important;
+  justify-content: center !important;
+  gap: 20px !important;
+}
