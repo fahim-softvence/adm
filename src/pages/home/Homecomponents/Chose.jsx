@@ -27,7 +27,7 @@ const Chose = () => {
             </div>
           </div>
           <div className="why-choose-col why-choose-image-area-col">
-            <div className="why-choose-image-area"></div>
+            <div className="why-choose-image-area" style={{ backgroundImage: `url(${section?.image_url})` }}></div>
           </div>
         </div>
       </section>

@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import Logo from "../../../assets/logo2.png";
 import Logo1 from "../../../assets/logo.png";
 import { Link } from "react-router-dom";
+import useContactData from "../../../hooks/useContactData";
 
 const Contactheader = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const { section } = useContactData("Contact Us", "Hero Section");
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -15,9 +18,11 @@ const Contactheader = () => {
       <div class="section-padding-x">
         <nav className="breakdown-navbar">
           <div className="breakdown-navbar-wrapper">
-            <Link className="navbar-brand" to="/">
-              <img src={Logo} alt="logo" />
-            </Link>
+            {section?.navlogo?.map((logo) => (
+              <Link className="navbar-brand" to="/">
+                <img src={logo?.logo_url} alt="logo" />
+              </Link>
+            ))}
             <ul className="navbar-list">
               <li className="nav-item-1">
                 <Link className="nav-link" to="/">

@@ -7,7 +7,6 @@ import useAboutData from '../../../hooks/useAboutData'
 
 const Aboutbanner = () => {
   const {data,section} = useAboutData("About Us", "Hero Section")  
-  console.log(data);
 
   
   return (
@@ -27,7 +26,7 @@ const Aboutbanner = () => {
           </div>
           <img
             class="common-banner-right-img"
-            src={Banner}
+            src={section?.image_url}
             alt=""
           />
         </div>

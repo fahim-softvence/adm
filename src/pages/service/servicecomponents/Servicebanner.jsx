@@ -1,16 +1,17 @@
 import React from 'react'
 import Banner from "../../../assets/common-banner-img.png"
 import { Link } from 'react-router-dom'
+import useServiceData from '../../../hooks/useServiceData'
 
 const Servicebanner = () => {
+  const { section } = useServiceData("Services", "Hero Section");
   return (
     <>
       <section class="section-padding-x common-banner">
         <div class="common-banner-left">
-          <h3 class="title">Jumpstart Service</h3>
+          <h3 class="title">{section?.title}</h3>
           <p class="text">
-            At Car Breakdown, we are dedicated to providing top-notch roadside
-            assistance and recovery services to drivers in need.
+            {section?.description}
           </p>
         </div>
         <div class="common-banner-right">
@@ -21,7 +22,7 @@ const Servicebanner = () => {
           </div>
           <img
             class="common-banner-right-img"
-            src={Banner}
+            src={section?.image_url}
             alt=""
           />
         </div>

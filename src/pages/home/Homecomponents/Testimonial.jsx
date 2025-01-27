@@ -55,7 +55,7 @@ const Testimonial = () => {
                 </div>
                 <p>{testimonial?.review}</p>
                 <div className="testimonial-author">
-                  <img src={Avatar} alt="John D" />
+                  <img src={testimonial?.customer_image_url} alt="John D" />
                   <div className="author-details">
                     <h4>{testimonial.customer_name}</h4>
                     <p>{testimonial.customer_position}</p>
@@ -64,7 +64,7 @@ const Testimonial = () => {
               </div>
             ))
           ) : (
-            <div>No testimonials available</div> 
+            <div>No testimonials available</div>
           )}
         </Slider>
       </div>

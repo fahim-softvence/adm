@@ -201,7 +201,7 @@ main {
 
 .hero-section {
   position: relative;
-  background: url("./assets/banner.png") no-repeat center center/cover;
+  /* background: url("./assets/banner.pn") no-repeat center center/cover; */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1429,11 +1429,12 @@ main {
 }
 
 .common-banner-right-img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 0;
-  max-width: 100%;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  z-index: 0 !important;
+  max-width: 100% !important;
+  height: 100% !important;
 }
 
 .banner-navigation {
@@ -2241,12 +2242,12 @@ main {
 .why-choose-image-area {
   border-radius: 12px 0px 0px 12px;
   border-left: 11px solid var(--Gradient, #00d26a);
-  background: linear-gradient(
+  /* background: linear-gradient(
       228deg,
       rgba(0, 0, 0, 0) -10.25%,
       rgba(2, 108, 183, 0.2) 62.12%
     ),
-    url("./assets/why-choose-section.png") lightgray 50% / cover no-repeat !important;
+    url("./assets/why-choose-section.pn") lightgray 50% / cover no-repeat !important; */
   width: 100%;
   min-height: 531px;
 }
@@ -2343,6 +2344,9 @@ main {
   flex-direction: column;
   gap: 16px;
 }
+.tm-services-card-item-img-area{
+  color: #000 !important;
+}
 .tm-services-card-item-content-area h4 {
   color: #252c32;
   font-size: 24px;
@@ -2368,16 +2372,14 @@ main {
 .tm-services-card-item:hover svg path {
   stroke: #fff;
 }
-.tm-services-card-item:hover {
-  background: linear-gradient(
-    115deg,
-    #86d72f -39.66%,
-    rgba(0, 0, 0, 0.8) 118.68%
-  );
+.tm-services-card-item:hover .tm-services-card-icon {
+  color: #fff !important;
+  filter: brightness(0) invert(1);
+  
 }
 .tm-services-card-item:hover .tm-services-card-item-content-area h4,
 .tm-services-card-item:hover .tm-services-card-item-content-area p {
-  color: #fff;
+  color: #fff !important; 
 }
 .tm-service-hidden-span {
   opacity: 0;
@@ -3931,4 +3933,9 @@ main {
   display: flex  !important;
   justify-content: center !important;
   gap: 20px !important;
+}
+
+.navlogo{
+  height: 50px !important;
+  width: 50px !important;
 }

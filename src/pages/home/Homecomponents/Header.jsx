@@ -7,19 +7,22 @@ const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const {section} = useHomeData("Home","Hero Section")
   
+  
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
-    <header className="hero-section" style={{backgroundImage}}>
+    <header className="hero-section" style={{ backgroundImage: `url(${section?.image_url})` }}>
       <div className="section-padding-x">
         <nav className="breakdown-navbar">
           <div className="breakdown-navbar-wrapper">
+            {section?.navlogo?.map((logo)=>(
             <Link className="navbar-brand" to="/">
-              <img src={Logo} alt="logo" />
+              <img src={logo?.logo_url} alt="logo" />
             </Link>
+            ))}
             <ul className="navbar-list">
               <li className="nav-item">
                 <Link className="nav-link" to="/">

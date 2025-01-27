@@ -1,38 +1,9 @@
 import React, { useState } from "react";
+import useContactData from "../../../hooks/useContactData";
 
 const Faq = () => {
-  const faqs = [
-    {
-      id: 1,
-      question: "What types of breakdowns do you handle?",
-      answer:
-        "We handle a wide range of breakdowns, including flat batteries, flat tires, engine failure, and accidents.",
-    },
-    {
-      id: 2,
-      question: "Do you offer 24/7 breakdown recovery?",
-      answer:
-        "Yes, we provide 24/7 breakdown recovery to ensure you’re never left stranded, no matter the time or place.",
-    },
-    {
-      id: 3,
-      question: "Do I need to pay upfront?",
-      answer:
-        "Payment options depend on your chosen plan or service. For pay-as-you-go services, payment is required upfront. Members on a subscription plan can access services without upfront charges.",
-    },
-    {
-      id: 4,
-      question: "How can I pay for the service?",
-      answer:
-        "We accept all major payment methods, including credit/debit cards, mobile payments, and online transfers, for your convenience.",
-    },
-    {
-      id: 5,
-      question: "Will my car be taken to a repair garage?",
-      answer:
-        "Yes, if required. We can tow your car to a nearby repair garage or a location of your choice, depending on your situation and preferences.",
-    },
-  ];
+  const {section} = useContactData("Contact Us", "Question and Answer")
+
 
   const [activeFAQ, setActiveFAQ] = useState(null);
   const toggleAccordion = (id) => {
@@ -45,23 +16,20 @@ const Faq = () => {
           <div class="tm-faq-row">
             <div class="tm-faq-col">
               <div class="car-contact-text-element-header">
-                <p class="tm-common-sub-heading">Questions & Answers</p>
+                <p class="tm-common-sub-heading">{section?.section_name}</p>
                 <h3 class="tm-common-heading">
-                  Frequently Asked <br class="d-none d-md-block" />
-                  Questions
+                 {section?.title}
                 </h3>
                 <p class="tm-common-para">
-                  Turpis lacus mi arcu mauris lorem non risus. Vel sodales
-                  facilisis quis <br class="d-none d-xxl-block" />
-                  quam tincidunt semper neque sit nisl.
+                  {section?.description}
                 </p>
               </div>
             </div>
             <div className="tm-faq-col">
               <div className="accordion tm-accordion" id="faqAccordion">
-                {faqs.map((faq) => (
+                {section?.question_and_answer?.map((faq) => (
                   <div className="accordion-item" key={faq.id}>
-                    <h2 className="accordion-header" id={`heading${faq.id}`}>
+                    <h2 className="accordion-header" id={`heading${faq.question}`}>
                       <button
                         className={`accordion-button ${
                           activeFAQ === faq.id ? "" : "collapsed"
@@ -69,7 +37,7 @@ const Faq = () => {
                         type="button"
                         onClick={() => toggleAccordion(faq.id)}
                         aria-expanded={activeFAQ === faq.id ? "true" : "false"}
-                        aria-controls={`collapse${faq.id}`}
+                        aria-controls={`collapse${faq.answer}`}
                       >
                         {faq.question}
                         <span

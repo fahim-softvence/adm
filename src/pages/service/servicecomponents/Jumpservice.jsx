@@ -1,12 +1,13 @@
 import React from "react";
-import Serphoto from "../../../assets/service-photo-1.png"
+import useServiceData from "../../../hooks/useServiceData";
 
 const Jumpservice = () => {
+  const { section } = useServiceData("Services", "Jumpstart Service");
   return (
     <>
       <section class="section-padding-x text-img-container m-top m-bottom">
         <div class="img-container">
-          <img src={Serphoto} alt="Serphoto" />
+          <img src={section?.image_url} alt="Serphoto" />
         </div>
         <div class="text-container">
           <div class="section-title mt-4">Jumpstart Service</div>

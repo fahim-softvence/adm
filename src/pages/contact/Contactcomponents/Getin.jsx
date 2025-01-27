@@ -1,7 +1,9 @@
 import React from "react";
 import Contact from "../../../assets/car-contact.png"
+import useContactData from "../../../hooks/useContactData";
 
 const Getin = () => {
+  const {section} = useContactData("Contact Us", "Contact Us")
   return (
     <>
       <section class="section-padding-x m-top m-bottom">
@@ -12,13 +14,10 @@ const Getin = () => {
                 <div class="car-contact-text-element-header">
                   <p class="tm-common-sub-heading">Get In Touch</p>
                   <h3 class="tm-common-heading">
-                    Contact Car Breakdown <br class="d-none d-md-block" />
-                    Team Now
+                    {section?.title}
                   </h3>
                   <p class="tm-common-para">
-                    Turpis lacus mi arcu mauris lorem non risus. Vel sodales
-                    facilisis quis <br class="d-none d-xxl-block" />
-                    quam tincidunt semper neque sit nisl.
+                    {section?.description}
                   </p>
                 </div>
                 <div class="car-contact-text-element-footer">
@@ -84,7 +83,7 @@ const Getin = () => {
             </div>
             <div class="car-contact-col">
               <div class="car-contact-col-img-area">
-                <img src={Contact} alt="" srcset="" />
+                <img src={section?.image_url} alt="" srcset="" />
               </div>
             </div>
           </div>

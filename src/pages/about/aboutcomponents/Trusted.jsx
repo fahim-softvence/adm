@@ -4,7 +4,6 @@ import useAboutData from "../../../hooks/useAboutData";
 
 const Trusted = () => {
   const { section } = useAboutData("About Us", "Recovery Experts");
-  console.log(section);
 
   useEffect(() => {
     const progressBars = document.querySelectorAll(".progress-bar");
@@ -49,7 +48,7 @@ const Trusted = () => {
           </div>
         </div>
         <div className="img-container">
-          <img src={About} alt="About Us" />
+          <img src={section?.image_url} alt="About Us" />
         </div>
       </section>
     </>

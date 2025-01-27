@@ -5,9 +5,7 @@ const Plancard = ({ title, description, icon, link }) => {
     <div className="tm-services-card-item">
       <div className="tm-services-card-item-img-area">
         {icon ? (
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="48" viewBox="0 0 50 48" fill="none">
-            {icon}
-          </svg>
+          <img className='tm-services-card-icon' src={icon} alt="" />
         ) : (
           <div>No Icon Available</div>
         )}
