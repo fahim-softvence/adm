@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import Logo from  "../../../assets/logo.png"
+import Logo from "../../../assets/logo.png";
 import { Link } from "react-router-dom";
 import useHomeData from "../../../hooks/useHomeData";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const {section} = useHomeData("Home","Hero Section")
-  
-  
+  const { section } = useHomeData("Home", "Hero Section");
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -18,10 +16,11 @@ const Header = () => {
       <div className="section-padding-x">
         <nav className="breakdown-navbar">
           <div className="breakdown-navbar-wrapper">
-            {section?.navlogo?.map((logo)=>(
-            <Link className="navbar-brand" to="/">
-              <img src={logo?.logo_url} alt="logo" />
-            </Link>
+            {/* Map over navlogo array with a unique key */}
+            {section?.navlogo?.map((logo, index) => (
+              <Link key={index} className="navbar-brand" to="/">
+                <img src={logo?.logo_url} alt="logo" />
+              </Link>
             ))}
             <ul className="navbar-list">
               <li className="nav-item">
@@ -125,7 +124,7 @@ const Header = () => {
                 required
               />
             </div>
-            <div className="">
+            <div>
               <button type="submit" className="btn-custom">
                 Get Quote
               </button>

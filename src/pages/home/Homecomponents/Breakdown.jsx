@@ -2,31 +2,32 @@ import React from "react";
 import Applelogo from "../../../assets/apple.png";
 import Googlelogo from "../../../assets/google-play.png";
 import useHomeData from "../../../hooks/useHomeData";
+import { Link } from "react-router-dom";
 
 const Breakdown = () => {
   const { data, section } = useHomeData("Home", "Download App");
 
   return (
     <>
-      <section class="download-app-section">
-        <div class="download-app-container">
-          <h1 class="download-app-title">{section?.title}</h1>
-          <p class="download-app-subtitle">{section?.description}</p>
+      <section className="download-app-section">
+        <div className="download-app-container">
+          <h1 className="download-app-title">{section?.title}</h1>
+          <p className="download-app-subtitle">{section?.description}</p>
           <div className="app-links">
-            <a
-              href="https://apps.apple.com"
+            <Link
+              to={section?.downloadsApp[0]?.download_link}
               target="_blank"
               rel="noopener noreferrer"
             >
               <img src={Applelogo} alt="App Store" />
-            </a>
-            <a
-              href="https://play.google.com"
+            </Link>
+            <Link
+              to={section?.downloadsApp[1]?.download_link}
               target="_blank"
               rel="noopener noreferrer"
             >
               <img src={Googlelogo} alt="Google Play" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

@@ -2,17 +2,23 @@ import React, { useState } from "react";
 import useHomeData from "../../../hooks/useHomeData";
 import { useForm } from "react-hook-form";
 import useAxiosCommon from "../../../hooks/useAxiosCommon";
-import axios from "axios";
 import { CgSpinnerTwo } from "react-icons/cg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Booking = () => {
   const axiosCommon = useAxiosCommon();
-  const { data, section } = useHomeData("Home", "Book a Service Time");
+  const { section } = useHomeData("Home", "Book a Service Time");
   const [location, setLocation] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-  const { register, handleSubmit,watch, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitted },
+  } = useForm();
 
   const handleGetLocation = () => {
     if (navigator.geolocation) {
@@ -44,16 +50,26 @@ const Booking = () => {
   };
 
   const onSubmit = async (data) => {
-    setLoading(true)
-    console.log(data)
+    setLoading(true);
+
     try {
-      const response = await axios.post('https://adamorsler-django.onrender.com/api/booking/', data);
-      console.log('Booking successful', response);
+      const response = await axiosCommon.post("/booking/", data);
+      console.log("Booking successful", response);
+      toast.success("Booking Successful!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
       reset();
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
-      console.error('Error submitting booking', error);
-      setLoading(false)
+      console.error("Error submitting booking", error);
+      setLoading(false);
     }
   };
 
@@ -63,7 +79,6 @@ const Booking = () => {
         <div className="section-padding-x">
           <h2 className="section-title">{section?.title}</h2>
           <p className="section-subtitle">{section?.description}</p>
-
           <div className="booking-form-wrapper">
             <div className="booking-form-continer">
               <h3 className="booking-form-title">Booking Form</h3>
@@ -71,28 +86,40 @@ const Booking = () => {
               <form className="booking-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-input-wrapper">
                   <label className="form-label">
-                    user_fullname <span>*</span>
+                    Fullname <span>*</span>
                   </label>
                   <input
                     placeholder="Username"
                     type="text"
                     className="form-control"
-                    {...register('user_fullname', { required: true })}
+                    {...register("user_fullname", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.user_fullname && <span>This field is required</span>}
+                  {isSubmitted && errors.user_fullname && (
+                    <span style={{ color: "red" }}>
+                      {errors.user_fullname.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
                   <label className="form-label">
-                    user_email <span>*</span>
+                    Email <span>*</span>
                   </label>
                   <input
                     placeholder="Email"
                     type="email"
                     className="form-control"
-                    {...register('user_email', { required: true })}
+                    {...register("user_email", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.user_email && <span>This field is required</span>}
+                  {isSubmitted && errors.user_email && (
+                    <span style={{ color: "red" }}>
+                      {errors.user_email.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
@@ -103,22 +130,34 @@ const Booking = () => {
                     placeholder="Phone"
                     type="number"
                     className="form-control"
-                    {...register('user_phone', { required: true })}
+                    {...register("user_phone", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.user_phone && <span>This field is required</span>}
+                  {isSubmitted && errors.user_phone && (
+                    <span style={{ color: "red" }}>
+                      {errors.user_phone.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
                   <label className="form-label">
-                    user_address <span>*</span>
+                    Address <span>*</span>
                   </label>
                   <input
                     placeholder="Address"
                     type="text"
                     className="form-control"
-                    {...register('user_address', { required: true })}
+                    {...register("user_address", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.user_address && <span>This field is required</span>}
+                  {isSubmitted && errors.user_address && (
+                    <span style={{ color: "red" }}>
+                      {errors.user_address.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
@@ -127,7 +166,9 @@ const Booking = () => {
                   </label>
                   <select
                     className="form-select"
-                    {...register('recovery_type', { required: true })}
+                    {...register("recovery_type", {
+                      required: "This field is required",
+                    })}
                   >
                     <option>Jumpstart Service</option>
                     <option>A2B Transportation</option>
@@ -135,7 +176,11 @@ const Booking = () => {
                     <option>Accident Assistance</option>
                     <option>Mobile Tyre Fitting</option>
                   </select>
-                  {errors.recovery_type && <span>This field is required</span>}
+                  {isSubmitted && errors.recovery_type && (
+                    <span style={{ color: "red" }}>
+                      {errors.recovery_type.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
@@ -145,9 +190,15 @@ const Booking = () => {
                   <input
                     type="text"
                     className="form-control"
-                    {...register('vehicle_model', { required: true })}
+                    {...register("vehicle_model", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.vehicle_model && <span>This field is required</span>}
+                  {isSubmitted && errors.vehicle_model && (
+                    <span style={{ color: "red" }}>
+                      {errors.vehicle_model.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
@@ -157,9 +208,15 @@ const Booking = () => {
                   <input
                     type="text"
                     className="form-control"
-                    {...register('vehicle_make', { required: true })}
+                    {...register("vehicle_make", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.vehicle_make && <span>This field is required</span>}
+                  {isSubmitted && errors.vehicle_make && (
+                    <span style={{ color: "red" }}>
+                      {errors.vehicle_make.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
@@ -169,9 +226,15 @@ const Booking = () => {
                   <input
                     type="number"
                     className="form-control"
-                    {...register('registration_number', { required: true })}
+                    {...register("registration_number", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.registration_number && <span>This field is required</span>}
+                  {isSubmitted && errors.registration_number && (
+                    <span style={{ color: "red" }}>
+                      {errors.registration_number.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
@@ -186,9 +249,14 @@ const Booking = () => {
                         type="radio"
                         name="car_hybrid_or_electric"
                         value="yes"
-                        {...register('car_hybrid_or_electric')}
+                        {...register("car_hybrid_or_electric", {
+                          required: "Please select an option",
+                        })}
                       />
-                      <label className="form-check-label" htmlFor="flexRadioDefault1">
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexRadioDefault1"
+                      >
                         Yes
                       </label>
                     </div>
@@ -198,13 +266,23 @@ const Booking = () => {
                         type="radio"
                         name="hybrid_electric"
                         value="no"
-                        {...register('hybrid_electric')}
+                        {...register("hybrid_electric", {
+                          required: "Please select an option",
+                        })}
                       />
-                      <label className="form-check-label" htmlFor="flexRadioDefault2">
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexRadioDefault2"
+                      >
                         No
                       </label>
                     </div>
                   </div>
+                  {isSubmitted && errors.car_hybrid_or_electric && (
+                    <span style={{ color: "red" }}>
+                      {errors.car_hybrid_or_electric.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
@@ -213,9 +291,15 @@ const Booking = () => {
                   <input
                     type="text"
                     className="form-control"
-                    {...register('current_location', { required: true })}
+                    {...register("current_location", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.service_location && <span>This field is required</span>}
+                  {isSubmitted && errors.current_location && (
+                    <span style={{ color: "red" }}>
+                      {errors.current_location.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
@@ -223,9 +307,15 @@ const Booking = () => {
                   <input
                     type="number"
                     className="form-control"
-                    {...register('post_code', { required: true })}
+                    {...register("post_code", {
+                      required: "This field is required",
+                    })}
                   />
-                  {errors.postcode && <span>This field is required</span>}
+                  {isSubmitted && errors.post_code && (
+                    <span style={{ color: "red" }}>
+                      {errors.post_code.message}
+                    </span>
+                  )}
                   <button
                     type="button"
                     className="btn-custom w-100 form-btn"
@@ -240,15 +330,24 @@ const Booking = () => {
                   <input
                     type="file"
                     className="form-control"
-                    {...register('images')}
+                    {...register("images", {
+                      required: "Please select a file if you want to upload.",
+                    })}
                   />
+                  {isSubmitted && errors.images && (
+                    <span style={{ color: "red" }}>
+                      {errors.images.message}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-input-wrapper">
-                  <button type="submit" className="btn-custom w-100  form-btn">
-                    {
-                      loading? <CgSpinnerTwo size={24} /> : 'Submit Booking'
-                    }
+                  <button type="submit" className="btn-custom w-100 form-btn">
+                    {loading ? (
+                      <CgSpinnerTwo size={24} className="spinner-icon" />
+                    ) : (
+                      "Submit Booking"
+                    )}
                   </button>
                 </div>
               </form>
@@ -256,6 +355,7 @@ const Booking = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </>
   );
 };

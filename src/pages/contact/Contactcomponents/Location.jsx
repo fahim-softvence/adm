@@ -7,24 +7,24 @@ const Location = () => {
   const { section } = useContactData("Contact Us", "Our Locations");
   return (
     <>
-      <div class="section-padding-x m-bottom">
-        <div class="location-section">
-          <p class="tm-sub-heading text-center">{section?.section_name}</p>
-          <h3 class="tm-common-heading text-center">{section?.title}</h3>
-          <div class="location-card-wrapper">
+      <div className="section-padding-x m-bottom">
+        <div className="location-section">
+          <p className="tm-sub-heading text-center">{section?.section_name}</p>
+          <h3 className="tm-common-heading text-center">{section?.title}</h3>
+          <div className="location-card-wrapper">
               {section?.location?.map((location) => (
-            <div class="tm-location-card">
-              <div class="tm-location-card-img-area">
+            <div className="tm-location-card">
+              <div className="tm-location-card-img-area">
                 <img src={Location1} alt="" srcset="" />
               </div>
-                <div class="tm-location-card-content-area">
+                <div className="tm-location-card-content-area">
                   <h4>{location?.title}</h4>
-                  <div class="tm-location-card-content-area-footer">
-                    <div class="tm-location-card-content-area-footer-left">
+                  <div className="tm-location-card-content-area-footer">
+                    <div className="tm-location-card-content-area-footer-left">
                       <p>{location?.address}</p>
                       <p>Electric City, EL 56789</p>
                     </div>
-                    <div class="tm-location-card-content-area-footer-right">
+                    <div className="tm-location-card-content-area-footer-right">
                      <img src={location?.icon_url} alt="" />
                     </div>
                   </div>

@@ -11,27 +11,27 @@ const Faq = () => {
   };
   return (
     <>
-      <div class="section-padding-x m-bottom">
-        <div class="tm-faq-section">
-          <div class="tm-faq-row">
-            <div class="tm-faq-col">
-              <div class="car-contact-text-element-header">
-                <p class="tm-common-sub-heading">{section?.section_name}</p>
-                <h3 class="tm-common-heading">
+      <div className="section-padding-x m-bottom">
+        <div className="tm-faq-section">
+          <div className="tm-faq-row">
+            <div className="tm-faq-col">
+              <div className="car-contact-text-element-header">
+                <p className="tm-common-sub-heading">{section?.section_name}</p>
+                <h3 className="tm-common-heading">
                  {section?.title}
                 </h3>
-                <p class="tm-common-para">
+                <p className="tm-common-para">
                   {section?.description}
                 </p>
               </div>
             </div>
-            <div className="tm-faq-col">
-              <div className="accordion tm-accordion" id="faqAccordion">
+            <div classNameName="tm-faq-col">
+              <div classNameName="accordion tm-accordion" id="faqAccordion">
                 {section?.question_and_answer?.map((faq) => (
-                  <div className="accordion-item" key={faq.id}>
-                    <h2 className="accordion-header" id={`heading${faq.question}`}>
+                  <div classNameName="accordion-item" key={faq.id}>
+                    <h2 classNameName="accordion-header" id={`heading${faq.question}`}>
                       <button
-                        className={`accordion-button ${
+                        classNameName={`accordion-button ${
                           activeFAQ === faq.id ? "" : "collapsed"
                         }`}
                         type="button"
@@ -41,7 +41,7 @@ const Faq = () => {
                       >
                         {faq.question}
                         <span
-                          className={`icon-plus ${
+                          classNameName={`icon-plus ${
                             activeFAQ === faq.id ? "d-none" : ""
                           }`}
                         >
@@ -70,7 +70,7 @@ const Faq = () => {
                           </svg>
                         </span>
                         <span
-                          className={`icon-minus ${
+                          classNameName={`icon-minus ${
                             activeFAQ === faq.id ? "" : "d-none"
                           }`}
                         >
@@ -95,25 +95,25 @@ const Faq = () => {
                     </h2>
                     <div
                       id={`collapse${faq.id}`}
-                      className={`accordion-collapse collapse ${
+                      classNameName={`accordion-collapse collapse ${
                         activeFAQ === faq.id ? "show" : ""
                       }`}
                       aria-labelledby={`heading${faq.id}`}
                       data-bs-parent="#faqAccordion"
                     >
-                      <div className="accordion-body">{faq.answer}</div>
+                      <div classNameName="accordion-body">{faq.answer}</div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="tm-need-more-help">
+              <div classNameName="tm-need-more-help">
                 <h3>Need More Help?</h3>
                 <p>
                   Sem morbi netus mauris purus eros blandit tristique at
                   maecenas. Eu tellus enim.
                 </p>
                 <a
-                  className="tm-contact-gmail"
+                  classNameName="tm-contact-gmail"
                   href="mailto:hi@electema.com?cc=cc@example.com&bcc=bcc@example.com&subject=Inquiry&body=Demo email"
                 >
                   Contact Us

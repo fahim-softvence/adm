@@ -5,26 +5,26 @@ const Jumpservice = () => {
   const { section } = useServiceData("Services", "Jumpstart Service");
   return (
     <>
-      <section class="section-padding-x text-img-container m-top m-bottom">
-        <div class="img-container">
+      <section className="section-padding-x text-img-container m-top m-bottom">
+        <div className="img-container">
           <img src={section?.image_url} alt="Serphoto" />
         </div>
-        <div class="text-container">
-          <div class="section-title mt-4">Jumpstart Service</div>
-          <div class="section-text mt-3">
+        <div className="text-container">
+          <div className="section-title mt-4">Jumpstart Service</div>
+          <div className="section-text mt-3">
             Our Jumpstart Service is the quick and reliable solution when your
             car battery fails. Whether you’re stuck at home, work, or on the
             road, our trained technicians will arrive promptly to jumpstart your
             vehicle and get you moving again.
           </div>
-          <div class="section-text mt-3">
+          <div className="section-text mt-3">
             We cater to all types of vehicles, including petrol, diesel, hybrid,
             and electric models. If your battery cannot be revived, we’ll guide
             you on the next steps, including battery replacement if required.
           </div>
 
-          <div class="about-benefits">
-            <div class="item">
+          <div className="about-benefits">
+            <div className="item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="31"
@@ -46,7 +46,7 @@ const Jumpservice = () => {
               <span> Fast Response Time. </span>
             </div>
 
-            <div class="item">
+            <div className="item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="31"
@@ -67,7 +67,7 @@ const Jumpservice = () => {
               </svg>
               <span> Experienced Technicians. </span>
             </div>
-            <div class="item">
+            <div className="item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="31"
@@ -88,7 +88,7 @@ const Jumpservice = () => {
               </svg>
               <span> Available 24/7. </span>
             </div>
-            <div class="item">
+            <div className="item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="31"

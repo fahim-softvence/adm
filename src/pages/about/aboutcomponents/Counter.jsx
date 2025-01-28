@@ -3,25 +3,25 @@ import React from 'react'
 const Counter = () => {
   return (
     <>
-      <section class="about-counter m-top m-bottom">
-        <div class="item">
-          <div class="title">05 +</div>
-          <div class="text">Years of Experience</div>
+      <section className="about-counter m-top m-bottom">
+        <div className="item">
+          <div className="title">05 +</div>
+          <div className="text">Years of Experience</div>
         </div>
-        <div class="count-line"></div>
-        <div class="item">
-          <div class="title">20k +</div>
-          <div class="text">Customer Satisfaction</div>
+        <div className="count-line"></div>
+        <div className="item">
+          <div className="title">20k +</div>
+          <div className="text">Customer Satisfaction</div>
         </div>
-        <div class="count-line"></div>
-        <div class="item">
-          <div class="title">210 +</div>
-          <div class="text">Customer Satisfaction</div>
+        <div className="count-line"></div>
+        <div className="item">
+          <div className="title">210 +</div>
+          <div className="text">Customer Satisfaction</div>
         </div>
-        <div class="count-line"></div>
-        <div class="item">
-          <div class="title">164 +</div>
-          <div class="text">Certified Team</div>
+        <div className="count-line"></div>
+        <div className="item">
+          <div className="title">164 +</div>
+          <div className="text">Certified Team</div>
         </div>
       </section>
     </>

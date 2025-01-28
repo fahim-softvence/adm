@@ -4,15 +4,15 @@ import Pricingcard from "../../../shared/Pricingcard";
 const Pricing = () => {
   return (
     <>
-      <section class="pricing-section" id="pricing">
-        <div class="section-padding-x">
-          <h2 class="section-title">Pricing & Plans</h2>
-          <p class="section-subtitle">
+      <section className="pricing-section" id="pricing">
+        <div className="section-padding-x">
+          <h2 className="section-title">Pricing & Plans</h2>
+          <p className="section-subtitle">
             Both a free trial and a free set of features for anyone who wants to
             use them. The more orders your company
           </p>
 
-          <div class="pricing-cards">
+          <div className="pricing-cards">
             <Pricingcard
               title="Basic"
               description="Best for small business owners, startups who need a landing page

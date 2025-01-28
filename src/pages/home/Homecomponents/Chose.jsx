@@ -3,7 +3,6 @@ import useHomeData from "../../../hooks/useHomeData";
 
 const Chose = () => {
   const { section } = useHomeData("Home", "Why choose us");
-  
 
   return (
     <>
@@ -17,8 +16,8 @@ const Chose = () => {
             <div className="why-choose-content-area">
               <p className="tm-common-para">{section?.description}</p>
               <div className="why-choose-content-area--point-wrapper">
-                {section?.why_choose_us.map((chosedata) => (
-                  <div className="why-choose-content-area--point">
+                {section?.why_choose_us?.map((chosedata, index) => (
+                  <div key={chosedata?.id || index} className="why-choose-content-area--point">
                     <p className="why-choose-content-area--point-num">{chosedata.title}</p>
                     <h4>{chosedata.description}</h4>
                   </div>
@@ -27,7 +26,11 @@ const Chose = () => {
             </div>
           </div>
           <div className="why-choose-col why-choose-image-area-col">
-            <div className="why-choose-image-area" style={{ backgroundImage: `url(${section?.image_url})` }}></div>
+            <div
+              className="why-choose-image-area"
+              style={{ backgroundImage: `url(${section?.image_url})` }}
+              alt="Why Choose Us"
+            ></div>
           </div>
         </div>
       </section>

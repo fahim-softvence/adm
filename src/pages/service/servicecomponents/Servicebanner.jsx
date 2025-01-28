@@ -7,21 +7,21 @@ const Servicebanner = () => {
   const { section } = useServiceData("Services", "Hero Section");
   return (
     <>
-      <section class="section-padding-x common-banner">
-        <div class="common-banner-left">
-          <h3 class="title">{section?.title}</h3>
-          <p class="text">
+      <section className="section-padding-x common-banner">
+        <div className="common-banner-left">
+          <h3 className="title">{section?.title}</h3>
+          <p className="text">
             {section?.description}
           </p>
         </div>
-        <div class="common-banner-right">
-          <div class="banner-navigation">
+        <div className="common-banner-right">
+          <div className="banner-navigation">
             <a href="./index.html"><Link to="/">Home</Link></a>
-            <span class="ms-1">/</span>
+            <span className="ms-1">/</span>
             <span>Services</span>
           </div>
           <img
-            class="common-banner-right-img"
+            className="common-banner-right-img"
             src={section?.image_url}
             alt=""
           />

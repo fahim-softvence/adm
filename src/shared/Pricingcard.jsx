@@ -11,11 +11,11 @@ const Pricingcard = ({
 }) => {
   return (
     <>
-      <div class="pricing-card">
+      <div className="pricing-card">
         <h3>{title}</h3>
-        <div class="price">${price}</div>
+        <div className="price">${price}</div>
         <p>{description}</p>
-        <button class="btn-custom">Get Started</button>
+        <button className="btn-custom">Get Started</button>
         <ul>
           <li>{list1}</li>
           <li>{list2}</li>

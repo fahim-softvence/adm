@@ -6,23 +6,23 @@ const Getin = () => {
   const {section} = useContactData("Contact Us", "Contact Us")
   return (
     <>
-      <section class="section-padding-x m-top m-bottom">
-        <div class="car-contact-section">
-          <div class="car-contact-row">
-            <div class="car-contact-col">
-              <div class="car-contact-text-element">
-                <div class="car-contact-text-element-header">
-                  <p class="tm-common-sub-heading">Get In Touch</p>
-                  <h3 class="tm-common-heading">
+      <section className="section-padding-x m-top m-bottom">
+        <div className="car-contact-section">
+          <div className="car-contact-row">
+            <div className="car-contact-col">
+              <div className="car-contact-text-element">
+                <div className="car-contact-text-element-header">
+                  <p className="tm-common-sub-heading">Get In Touch</p>
+                  <h3 className="tm-common-heading">
                     {section?.title}
                   </h3>
-                  <p class="tm-common-para">
+                  <p className="tm-common-para">
                     {section?.description}
                   </p>
                 </div>
-                <div class="car-contact-text-element-footer">
-                  <div class="tm-car-contact-way">
-                    <div class="tm-car-contact-way-img-area">
+                <div className="car-contact-text-element-footer">
+                  <div className="tm-car-contact-way">
+                    <div className="tm-car-contact-way-img-area">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="33"
@@ -40,14 +40,14 @@ const Getin = () => {
                       </svg>
                     </div>
 
-                    <div class="tm-car-contact-way-text-area">
+                    <div className="tm-car-contact-way-text-area">
                       <h3>Call Us</h3>
                       <a href="tel:+6286464442222">+62 864 6444 2222</a>
                     </div>
                   </div>
-                  <div class="tm-contact-devider"></div>
-                  <div class="tm-car-contact-way">
-                    <div class="tm-car-contact-way-img-area">
+                  <div className="tm-contact-devider"></div>
+                  <div className="tm-car-contact-way">
+                    <div className="tm-car-contact-way-img-area">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="33"
@@ -71,7 +71,7 @@ const Getin = () => {
                         />
                       </svg>
                     </div>
-                    <div class="tm-car-contact-way-text-area">
+                    <div className="tm-car-contact-way-text-area">
                       <h3>Email</h3>
                       <a href="mailto:hi@electema.com?cc=cc@example.com&bcc=bcc@example.com&subject=Inquiry&body=Demo email">
                         hi@electema.com
@@ -81,8 +81,8 @@ const Getin = () => {
                 </div>
               </div>
             </div>
-            <div class="car-contact-col">
-              <div class="car-contact-col-img-area">
+            <div className="car-contact-col">
+              <div className="car-contact-col-img-area">
                 <img src={section?.image_url} alt="" srcset="" />
               </div>
             </div>

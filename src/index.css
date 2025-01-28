@@ -58,7 +58,7 @@ select:focus {
 }
 
 body {
-  font-family: var(--font-montserrat);
+  font-family: var(--font-montserrat) !important;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -3939,3 +3939,19 @@ main {
   height: 50px !important;
   width: 50px !important;
 }
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner-icon {
+  animation: spin 1s linear infinite; 
+}
+
+
+
