@@ -75,7 +75,7 @@ const Booking = () => {
 
   return (
     <>
-      <section className="booking-section">
+      <section className="booking-section" id="bookingform">
         <div className="section-padding-x">
           <h2 className="section-title">{section?.title}</h2>
           <p className="section-subtitle">{section?.description}</p>
@@ -330,9 +330,7 @@ const Booking = () => {
                   <input
                     type="file"
                     className="form-control"
-                    {...register("images", {
-                      required: "Please select a file if you want to upload.",
-                    })}
+                    {...register("images")}
                   />
                   {isSubmitted && errors.images && (
                     <span style={{ color: "red" }}>

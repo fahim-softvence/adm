@@ -14,13 +14,14 @@ const Serviceheader = () => {
 
   return (
     <>
-      <div class="section-padding-x">
+      <div className="section-padding-x">
         <nav className="breakdown-navbar">
-          <div className="breakdown-navbar-wrapper">
-            {section?.navlogo?.map((logo) => (
-              <Link className="navbar-brand" to="/">
-                <img src={logo?.logo_url} alt="logo" />
-              </Link>
+          <div  className="breakdown-navbar-wrapper">
+            {section?.navlogo?.map((logo,index) => (
+             <Link key={index} className="navbar-brand">
+             <img src={logo?.logo_url} alt="logo" />
+             <h2 className="logo-title-2">Car Breakdown</h2>
+           </Link>
             ))}
             <ul className="navbar-list">
               <li className="nav-item-1">
@@ -33,11 +34,7 @@ const Serviceheader = () => {
                   Service
                 </Link>
               </li>
-              <li className="nav-item-1">
-                <Link className="nav-link" to="/#pricing">
-                  Pricing
-                </Link>
-              </li>
+
               <li className="nav-item-1">
                 <Link className="nav-link" to="/about">
                   About Us
@@ -50,7 +47,7 @@ const Serviceheader = () => {
               </li>
             </ul>
 
-            <button className="btn-custom book-now">Book Now</button>
+           <button className="btn-custom book-now"><Link to="/#bookingform">Book Now</Link></button>
             <button className="hamburger text-black" onClick={toggleSidebar}>
               &#9776;
             </button>

@@ -18,9 +18,10 @@ const Contactheader = () => {
       <div class="section-padding-x">
         <nav className="breakdown-navbar">
           <div className="breakdown-navbar-wrapper">
-            {section?.navlogo?.map((logo) => (
-              <Link className="navbar-brand" to="/">
+            {section?.navlogo?.map((logo, index) => (
+              <Link key={index} className="navbar-brand">
                 <img src={logo?.logo_url} alt="logo" />
+                <h2 className="logo-title-2">Car Breakdown</h2>
               </Link>
             ))}
             <ul className="navbar-list">
@@ -35,11 +36,6 @@ const Contactheader = () => {
                 </Link>
               </li>
               <li className="nav-item-1">
-                <Link className="nav-link" to="/#pricing">
-                  Pricing
-                </Link>
-              </li>
-              <li className="nav-item-1">
                 <Link className="nav-link" to="/about">
                   About Us
                 </Link>
@@ -51,7 +47,9 @@ const Contactheader = () => {
               </li>
             </ul>
 
-            <button className="btn-custom book-now">Book Now</button>
+            <button className="btn-custom book-now">
+              <Link to="/#bookingform">Book Now</Link>
+            </button>
             <button className="hamburger text-black" onClick={toggleSidebar}>
               &#9776;
             </button>

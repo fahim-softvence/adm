@@ -12,16 +12,20 @@ const Header = () => {
   };
 
   return (
-    <header className="hero-section" style={{ backgroundImage: `url(${section?.image_url})` }}>
+    <header
+      className="hero-section"
+      style={{ backgroundImage: `url(${section?.image_url})` }}
+    >
       <div className="section-padding-x">
         <nav className="breakdown-navbar">
           <div className="breakdown-navbar-wrapper">
-            {/* Map over navlogo array with a unique key */}
-            {section?.navlogo?.map((logo, index) => (
-              <Link key={index} className="navbar-brand" to="/">
-                <img src={logo?.logo_url} alt="logo" />
-              </Link>
-            ))}
+              {section?.navlogo?.map((logo, index) => (
+                <Link key={index} className="navbar-brand">
+                  <img src={logo?.logo_url} alt="logo" />
+                  <h2 className="logo-title">Car Breakdown</h2>
+                </Link>
+              ))}
+
             <ul className="navbar-list">
               <li className="nav-item">
                 <Link className="nav-link" to="/">
@@ -31,11 +35,6 @@ const Header = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/service">
                   Service
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="#pricing">
-                  Pricing
                 </Link>
               </li>
               <li className="nav-item">
@@ -50,7 +49,9 @@ const Header = () => {
               </li>
             </ul>
 
-            <button className="btn-custom book-now">Book Now</button>
+            <button className="btn-custom book-now">
+              <Link to="/#bookingform">Book Now</Link>
+            </button>
             <button className="hamburger" onClick={toggleSidebar}>
               &#9776;
             </button>
@@ -69,11 +70,6 @@ const Header = () => {
               </li>
               <li className="sidebar-item">
                 <Link to="/service">Services</Link>
-              </li>
-              <li className="sidebar-item">
-                <Link to="/#pricing" onClick={() => setIsSidebarOpen(false)}>
-                  Pricing
-                </Link>
               </li>
               <li className="sidebar-item">
                 <Link to="/about">About Us</Link>

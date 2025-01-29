@@ -25,13 +25,13 @@ const Faq = () => {
                 </p>
               </div>
             </div>
-            <div classNameName="tm-faq-col">
-              <div classNameName="accordion tm-accordion" id="faqAccordion">
+            <div className="tm-faq-col">
+              <div className="accordion tm-accordion" id="faqAccordion">
                 {section?.question_and_answer?.map((faq) => (
-                  <div classNameName="accordion-item" key={faq.id}>
-                    <h2 classNameName="accordion-header" id={`heading${faq.question}`}>
+                  <div className="accordion-item" key={faq.id}>
+                    <h2 className="accordion-header" id={`heading${faq.question}`}>
                       <button
-                        classNameName={`accordion-button ${
+                        className={`accordion-button ${
                           activeFAQ === faq.id ? "" : "collapsed"
                         }`}
                         type="button"
@@ -41,7 +41,7 @@ const Faq = () => {
                       >
                         {faq.question}
                         <span
-                          classNameName={`icon-plus ${
+                          className={`icon-plus ${
                             activeFAQ === faq.id ? "d-none" : ""
                           }`}
                         >
@@ -70,7 +70,7 @@ const Faq = () => {
                           </svg>
                         </span>
                         <span
-                          classNameName={`icon-minus ${
+                          className={`icon-minus ${
                             activeFAQ === faq.id ? "" : "d-none"
                           }`}
                         >
@@ -95,25 +95,25 @@ const Faq = () => {
                     </h2>
                     <div
                       id={`collapse${faq.id}`}
-                      classNameName={`accordion-collapse collapse ${
+                      className={`accordion-collapse collapse ${
                         activeFAQ === faq.id ? "show" : ""
                       }`}
                       aria-labelledby={`heading${faq.id}`}
                       data-bs-parent="#faqAccordion"
                     >
-                      <div classNameName="accordion-body">{faq.answer}</div>
+                      <div className="accordion-body">{faq.answer}</div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div classNameName="tm-need-more-help">
+              <div className="tm-need-more-help">
                 <h3>Need More Help?</h3>
                 <p>
                   Sem morbi netus mauris purus eros blandit tristique at
                   maecenas. Eu tellus enim.
                 </p>
                 <a
-                  classNameName="tm-contact-gmail"
+                  className="tm-contact-gmail"
                   href="mailto:hi@electema.com?cc=cc@example.com&bcc=bcc@example.com&subject=Inquiry&body=Demo email"
                 >
                   Contact Us

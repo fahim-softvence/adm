@@ -1,14 +1,13 @@
 import React from "react";
-import Footerlogo from "../assets/footer-logo.png";
-import Applelogo from "../assets/apple.png";
-import Googlelogo from "../assets/google-play.png";
 import Facebooklogo from "../assets/facebook.png";
 import Instalogo from "../assets/insta.png";
 import Twiterlogo from "../assets/twitter.png";
 import useHomeData from "../hooks/useHomeData"
+import App from "../shared/App"
 
 const Footer = () => {
   const { section } = useHomeData("Home", "Footer");
+
   
   if (!section || !section.footer) {
     return <div>Loading...</div>; 
@@ -24,6 +23,7 @@ const Footer = () => {
                 <a href="#">
                   <img src={footer?.logo_url} alt="logo" className="navlogo"/>
                 </a>
+                <h2 className="logo-title-3">Car Breakdown</h2>
               </div>
               <p className="footer-about">{footer?.description}</p>
             </div>
@@ -61,22 +61,10 @@ const Footer = () => {
 
             <div className="footer-right">
               <h4 className="footer-heading">Get the App</h4>
-              <div className="app-links-2">
-                <a
-                  href="https://apps.apple.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={Applelogo} alt="App Store" />
-                </a>
-                <a
-                  href="https://play.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={Googlelogo} alt="Google Play" />
-                </a>
-              </div>
+              <div className="app-links">
+            <App/>
+
+          </div>
 
               <p>
                 Google Play and the Google Play logo are trademarks of Google,

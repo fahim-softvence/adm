@@ -14,13 +14,7 @@ const Servicebookingform = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    watch,
-    formState: { errors, isSubmitted },
-  } = useForm();
+  const {register, handleSubmit,reset,formState: { errors, isSubmitted },} = useForm();
 
   const handleGetLocation = () => {
     if (navigator.geolocation) {
@@ -76,9 +70,9 @@ const Servicebookingform = () => {
   };
   return (
     <>
-      <section classNameName="section-padding-x text-img-container m-top m-bottom">
-        <div classNameName="text-container">
-          <div className="booking-form-continer">
+      <section className="section-padding-x text-img-container m-top m-bottom">
+        <div className="text-container">
+          <div className="booking-form-continer-2">
             <h3 className="booking-form-title">Booking Form</h3>
             <p className="booking-form-subtitle">Vehicle Details</p>
             <form className="booking-form" onSubmit={handleSubmit(onSubmit)}>
@@ -327,9 +321,7 @@ const Servicebookingform = () => {
                 <input
                   type="file"
                   className="form-control"
-                  {...register("images", {
-                    required: "Please select a file if you want to upload.",
-                  })}
+                  {...register("images")}
                 />
                 {isSubmitted && errors.images && (
                   <span style={{ color: "red" }}>{errors.images.message}</span>
@@ -350,7 +342,7 @@ const Servicebookingform = () => {
           </div>
         </div>
 
-        <div classNameName="img-container d-none d-md-block">
+        <div className="img-container d-none d-md-block">
           <img src={Serphoto} alt="Serphoto" />
         </div>
       </section>

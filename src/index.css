@@ -37,7 +37,8 @@ ul {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+  color:#fff !important;
 }
 
 button:focus,
@@ -268,7 +269,7 @@ main {
 
 .btn-custom {
   background-color: #026cb7;
-  color: white;
+  color: white !important;
   border: none;
   padding: 8px 16px;
   border-radius: 5px;
@@ -3953,5 +3954,35 @@ main {
   animation: spin 1s linear infinite; 
 }
 
+    
+.navbar-brand{
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
 
+.logo-title{
+  margin-top: 10px !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #86D72F;
+}
+.logo-title-2{
+  margin-top: 10px !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+}
+.logo-title-3{
+  margin-top: 10px !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+}
+
+.footer-logo{
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
 
