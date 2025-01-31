@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import useHomeData from "../../../hooks/useHomeData";
 
 const Testimonial = () => {
-  const { section } = useHomeData("Home", "Customer Testimonials");
+  const { section } = useHomeData("Home", "Customer testimonials");
 
   const settings = {
     infinite: true,

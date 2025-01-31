@@ -15,7 +15,7 @@ const Contactheader = () => {
 
   return (
     <>
-      <div class="section-padding-x">
+      <div className="section-padding-x">
         <nav className="breakdown-navbar">
           <div className="breakdown-navbar-wrapper">
             {section?.navlogo?.map((logo, index) => (

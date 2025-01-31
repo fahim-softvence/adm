@@ -16,7 +16,7 @@ const Servicebanner = () => {
         </div>
         <div className="common-banner-right">
           <div className="banner-navigation">
-            <a href="./index.html"><Link to="/">Home</Link></a>
+          <Link to="/">Home</Link>
             <span className="ms-1">/</span>
             <span>Services</span>
           </div>

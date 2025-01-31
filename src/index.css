@@ -3986,3 +3986,20 @@ main {
   gap: 10px !important;
 }
 
+
+
+
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.tm-description.expanded {
+  white-space: normal; 
+}

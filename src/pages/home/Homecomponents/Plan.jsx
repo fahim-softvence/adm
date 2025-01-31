@@ -4,6 +4,7 @@ import useHomeData from "../../../hooks/useHomeData";
 
 const Plan = () => {
   const { section } = useHomeData("Home", "Best Services");
+
   return (
     <>
       <section className="tm-services-section section-padding-x m-bottom">
